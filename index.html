@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ravi Kumar's Data Science Portfolio" />
+  <title>Ravi Kumar | Data Science Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0A0E1A;
+      color: #E0E0E0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      position: relative;
+      background: linear-gradient(45deg, rgba(0, 15, 30, 0.8), rgba(10, 0, 50, 0.8)), url('https://images.unsplash.com/photo-1516321310764-8d9c8963d596') no-repeat center center/cover;
+      color: #fff;
+      padding: 150px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 4px solid #00F0FF;
+      overflow: hidden;
+    }
+    #particles-js, .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .stars {
+      background: transparent;
+    }
+    .star {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: twinkle 3s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { box-shadow: 0 0 5px #fff; }
+      to { box-shadow: 0 0 15px #00F0FF, 0 0 20px #8B00FF; }
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
+      margin-bottom: 0.5rem;
+      z-index: 1;
+    }
+    header p {
+      font-size: 1.8rem;
+      opacity: 0.9;
+      z-index: 1;
+    }
+    .typed-text {
+      font-family: 'Orbitron', sans-serif;
+      color: #00F0FF;
+      border-right: 2px solid #00F0FF;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #00F0FF; }
+    }
+    nav {
+      background: rgba(10, 14, 26, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 240, 255, 0.2);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #00F0FF;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 400;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00F0FF;
+      transform: translateY(-3px);
+    }
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: #141A2F;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+    }
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      color: #00F0FF;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #00F0FF;
+      cursor: pointer;
+    }
+    .about {
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .about-photo {
+      flex: 0 0 200px;
+      border: 4px solid #00F0FF;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00F0FF;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .about-content {
+      flex: 1;
+    }
+    .skills ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .skills li {
+      background: #1A2238;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #8B00FF;
+      transition: transform 0.3s ease;
+    }
+    .skills li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+    }
+    .projects .filter-buttons {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .projects .filter-btn {
+      background: #1A2238;
+      color: #00F0FF;
+      border: 1px solid #00F0FF;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+    }
+    .projects .filter-btn:hover, .projects .filter-btn.active {
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      box-shadow: 0 0 10px #00F0FF;
+    }
+    .projects .project-card {
+      background: #1A2238;
+      padding: 1.5rem;
+      border-left: 4px solid #00F0FF;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: none;
+    }
+    .projects .project-card.show {
+      display: block;
+    }
+    .projects .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #8B00FF, #00F0FF);
+      box-shadow: 0 0 15px #00F0FF;
+      transform: translateY(-3px);
+    }
+    .resume .resume-content {
+      display: none;
+      background: #1A2238;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid #00F0FF;
+      margin-top: 1rem;
+    }
+    .resume .resume-content.show {
+      display: block;
+    }
+    .resume .resume-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #8B00FF;
+      margin-bottom: 0.5rem;
+    }
+    .resume .resume-content p, .resume .resume-content ul {
+      margin-bottom: 1rem;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px #00F0FF;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00F0FF;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0A0E1A;
+      color: #E0E0E0;
+      border-top: 2px solid #00F0FF;
+    }
+    footer .footer-links a {
+      color: #00F0FF;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    footer .footer-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00F0FF;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #00F0FF;
+      border-radius: 5px;
+      background: #1A2238;
+      color: #E0E0E0;
+      font-family: 'Roboto', sans-serif;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00F0FF;
+    }
+    @media (max-width: 768px) {
+      body {
+        cursor: default;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+      }
+      section {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .projects .filter-btn {
+        padding: 0.4rem 0.8rem;
+        margin: 0 0.3rem;
+        font-size: 0.9rem;
+      }
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-photo {
+        margin: 0 auto 1rem;
+        flex: 0 0 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div id="particles-js"></div>
+    <div class="stars"></div>
+    <h1 data-aos="zoom-in">Ravi Kumar</h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="typed-text">Data Science Enthusiast | Python • SQL • Power BI • ML</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+  </nav>
+
+  <section id="about" class="about" data-aos="fade-up">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>I'm Ravi Kumar, a passionate data science student at Vikrama Simhapuri University. With strong foundations in AI, ML, Python, SQL, and Power BI, I aim to solve real-world problems using data. I'm currently pursuing a Data Science course at TEKS Academy and constantly building hands-on projects.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Programming Languages:</strong> Python, SQL, R</li>
+      <li><strong>Libraries:</strong> Pandas, NumPy, Matplotlib, Scikit-learn</li>
+      <li><strong>Tools:</strong> Power BI, Git, SQL Server</li>
+      <li><strong>Concepts:</strong> Data Cleaning, EDA, Visualization, Classification</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <button class="filter-btn" data-filter="powerbi">Power BI</button>
+    </div>
+    <div class="project-card ml" data-aos="flip-left">
+      <img src="https://via.placeholder.com/300x150?text=Crime+Prediction" alt="Crime Prediction Project Screenshot">
+      <h3>🔍 Crime Type and Occurrence Prediction</h3>
+      <p>Used ML to predict types of crimes using classification algorithms. Integrated visual insights for better understanding. Built with Python and Jupyter.</p>
+      <a class="btn" href="https://github.com/TRavi8688" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card powerbi" data-aos="flip-left" data-aos-delay="100">
+      <img src="https://via.placeholder.com/300x150?text=Bankruptcy+Dashboard" alt="Bankruptcy Prediction Dashboard Screenshot">
+      <h3>📊 Bankruptcy Prediction Dashboard</h3>
+      <p>Created an interactive Power BI dashboard to predict financial risk in companies. Visualized key metrics and provided insight into risk factors.</p>
+      <a class="btn" href="https://github.com/TRavi8688" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card powerbi" data-aos="flip-left" data-aos-delay="200">
+      <img src="https://via.placeholder.com/300x150?text=Income+Evaluation" alt="Income Evaluation Project Screenshot">
+      <h3>📊 Income Evaluation</h3>
+      <p>Analyzed income patterns using Power BI, providing insights into income distribution and key financial indicators.</p>
+      <a class="btn" href="https://github.com/TRavi8688" target="_blank">View on GitHub</a>
+    </div>
+  </section>
+
+  <section id="blog" class="blog" data-aos="fade-up">
+    <h2>Blog</h2>
+    <p>Coming soon! I'll be sharing my thoughts, articles, and tutorials on Data Science, AI, and more...</p>
+  </section>
+
+  <section id="resume" class="resume" data-aos="fade-up">
+    <h2 onclick="toggleResume()">Resume</h2>
+    <div class="resume-content" id="resumeContent">
+      <h3>T. Ravi Kumar</h3>
+      <p>Siddiq Nagar, Gachibowli, Hyderabad | PH: 8688533605 | Email: travikumartravikumar00@gmail.com</p>
+      <p><a href="https://github.com/TRavi8688" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">LinkedIn</a></p>
+      <h3>Summary</h3>
+      <p>Data Science fresher with expertise in SQL, Python, NumPy, Pandas, Matplotlib, and Power BI. Skilled in data analysis, visualization, and database management, with hands-on experience in SQL Server. Passionate about leveraging data-driven insights in healthcare and business. Currently pursuing a Data Science course at TEKS Academy.</p>
+      <h3>Technical Skills</h3>
+      <ul>
+        <li><strong>Data Analysis & Visualization:</strong> Pandas, NumPy, Matplotlib, Power BI</li>
+        <li><strong>Programming Languages:</strong> Python</li>
+        <li><strong>Databases:</strong> SQL Server, SQL</li>
+      </ul>
+      <h3>Professional Experience</h3>
+      <p><strong>Chathrapathi Greentech Softwares Pvt.</strong> (02/12/2024 - 28/02/2025)</p>
+      <ul>
+        <li>Developed Python-based solutions for data analysis and automation.</li>
+        <li>Gained hands-on experience in Python programming and problem-solving.</li>
+        <li>Worked on real-world projects, improving coding efficiency and debugging skills.</li>
+      </ul>
+      <p><strong>Data Science Projects at TEKS Academy</strong> (Dec 2024 - June 2025)</p>
+      <ul>
+        <li>Worked on multiple real-world data science projects involving data cleaning, preprocessing, and analysis.</li>
+        <li>Developed machine learning models for predictive analytics and performed data visualization using Power BI and Matplotlib.</li>
+        <li>Utilized SQL Server for database management and querying large datasets.</li>
+      </ul>
+      <h3>Education</h3>
+      <p><strong>Bachelor of Computer Applications (BCA) - AI and Data Science</strong> (Sep 2022 - June 2025)</p>
+      <p>Vikrama Simhapuri University</p>
+      <ul>
+        <li>Specialized in Artificial Intelligence and Data Science with a strong foundation in Python, SQL, and Machine Learning.</li>
+      </ul>
+      <p><strong>Data Science Course at TEKS Academy</strong> (Dec 2024 - June 2025)</p>
+      <ul>
+        <li>In-depth training in SQL Server, Python for Data Science, Data Visualization, and Machine Learning.</li>
+        <li>Worked on multiple hands-on real-world projects related to healthcare, finance, and predictive analytics.</li>
+      </ul>
+      <h3>Additional Information</h3>
+      <ul>
+        <li><strong>Languages:</strong> Telugu, English, Hindi</li>
+        <li><strong>Certifications:</strong> Post Graduate Diploma in Data Science (PGDS)</li>
+        <li><strong>Awards/Activities:</strong> Awarded 3 NSS certificates, including recognition from the Ministry of Youth Affairs and Sports, Nehru Yuva Kendra, for participation in the Viksit Bharat declamation contest.</li>
+      </ul>
+      <a class="btn" href="https://github.com/TRavi8688" target="_blank">View on GitHub</a>
+      <a class="btn" href="https://drive.google.com/your-resume-link" target="_blank">Download Resume</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">linkedin.com/in/t-ravi-kumar</a></p>
+    <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
+    <p>Location: Hyderabad, Siddiq Nagar</p>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <a href="#" class="back-to-top">↑</a>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/TRavi8688" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">LinkedIn</a>
+      <a href="mailto:travikumartravikumar00@gmail.com">Email</a>
+    </div>
+    <p>© 2025 Ravi Kumar | Built with ❤️ for Data Science</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#00F0FF' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#8B00FF', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 3, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    AOS.init({ duration: 1000, once: true });
+
+    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.classList.contains(filter)) {
+            card.classList.add('show');
+          } else {
+            card.classList.remove('show');
+          }
+        });
+      });
+    });
+    projectCards.forEach(card => card.classList.add('show'));
+
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+
+    function toggleResume() {
+      const resumeContent = document.getElementById('resumeContent');
+      resumeContent.classList.toggle('show');
+    }
+
+    function createStars(count) {
+      const starsContainer = document.querySelector('.stars');
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        starsContainer.appendChild(star);
+      }
+    }
+    createStars(50);
+  </script>
+</body>
+</html>
