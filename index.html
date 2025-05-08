@@ -440,15 +440,13 @@
       <a class="btn" href="https://github.com/TRavi8688" target="_blank">View on GitHub</a>
       <a class="btn" href="https://drive.google.com/your-resume-link" target="_blank">Download Resume</a>
     </div>
-  </section>
-<section id="contact" class="contact" data-aos="fade-up">
+  </section><section id="contact" class="contact" data-aos="fade-up">
   <h2>Contact</h2>
   <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
   <p>LinkedIn: <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">linkedin.com/in/t-ravi-kumar</a></p>
   <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
   <p>Location: Hyderabad, Siddiq Nagar</p>
 
-  <!-- Form (ID added for EmailJS) -->
   <form id="contact-form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
@@ -459,40 +457,49 @@
     <button type="submit" class="btn">Send Message</button>
   </form>
 
-  <!-- Success Message -->
-  <div id="success-message" style="display: none; background: #f0f8ff; padding: 20px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #6c63ff;">
-    <h3 style="color: #4CAF50;">✨ Thank You! ✨</h3>
-    <p>
-      Your message has been successfully received, and it's now part of my growing journey in Data Science!<br><br>
-      I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
-      I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
+  <!-- Futuristic 3D Success Message -->
+  <div id="success-message" style="display: none; position: relative; padding: 30px; border-radius: 16px; margin: 25px auto; max-width: 600px; background: linear-gradient(145deg, #0f2027, #203a43, #2c5364); color: white; box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; transform-style: preserve-3d; animation: float 3.5s ease-in-out infinite; backdrop-filter: blur(5px); border: 1px solid rgba(0,210,255,0.3);">
+    <div style="position: absolute; top: -15px; right: -15px; width: 60px; height: 60px; background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%2300d2ff\"><path d=\"M12 2L4 12l8 10 8-10z\"/></svg>') no-repeat; transform: rotate(15deg) scale(1.3); filter: drop-shadow(0 0 12px rgba(0,210,255,0.9));"></div>
+    <h3 style="font-size: 2em; margin-bottom: 20px; color: #00f2fe; text-shadow: 0 0 15px rgba(0,242,254,0.7); font-family: 'Orbitron', sans-serif;">✨ MESSAGE SENT! ✨</h3>
+    <p style="line-height: 1.7; font-size: 1.15em; margin-bottom: 15px;">
+      Your message has been successfully received, and it's now part of my growing journey in Data Science!
     </p>
+    <p style="font-style: italic; opacity: 0.9;">
+      "Every data point tells a story - thank you for adding yours to mine."
+    </p>
+    <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%) perspective(500px) rotateX(25deg); width: 85%; height: 25px; background: linear-gradient(90deg, rgba(0,210,255,0), rgba(0,210,255,0.4), rgba(0,210,255,0)); filter: blur(15px); border-radius: 50%;"></div>
   </div>
 </section>
 
-<!-- EmailJS Script - PASTE YOUR IDs HERE! -->
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; }
+    50% { transform: translateY(-15px) rotateY(8deg); box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 0 3px #00f2fe; }
+  }
+  
+  /* Add this to your main CSS */
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  // STEP 1: Replace "YOUR_USER_ID" with your EmailJS Public Key (from Integration tab)
-  emailjs.init("JsY8KGiITHJueqlEs"); // 🔴 REPLACE THIS!
-
-  const form = document.getElementById("contact-form");
-  const successMsg = document.getElementById("success-message");
-
-  form.addEventListener("submit", function(e) {
+  // Initialize with YOUR credentials
+  emailjs.init("JsY8KGiITHJueqlEs"); // Public Key
+  
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
     
-    // STEP 2: Replace "YOUR_SERVICE_ID" and "YOUR_TEMPLATE_ID" (from EmailJS dashboard)
-    emailjs.sendForm("service_5w8apsd ", "template_32zpg14", e.target) // 🔴 REPLACE THESE!
+    // Send using your Service and Template IDs
+    emailjs.sendForm("service_5w8apsd", "template_32zpg14", e.target)
       .then(() => {
-        form.style.display = "none";
-        successMsg.style.display = "block";
-        form.reset();
+        document.getElementById("contact-form").style.display = "none";
+        document.getElementById("success-message").style.display = "block";
       })
-      .catch(() => {
-        // Fallback: Still show success message if email fails
-        form.style.display = "none";
-        successMsg.style.display = "block";
+      .catch((error) => {
+        console.log("Email failed:", error);
+        // Still show success UI even if email fails
+        document.getElementById("contact-form").style.display = "none";
+        document.getElementById("success-message").style.display = "block";
       });
   });
 </script>
