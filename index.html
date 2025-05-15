@@ -74,6 +74,17 @@
       overflow: hidden;
       animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
     }
+    .name-typed-text {
+      font-family: 'Orbitron', sans-serif;
+      color: #00F0FF;
+      border-right: 2px solid #00F0FF;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+      font-size: 4rem;
+      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
+    }
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
@@ -324,6 +335,9 @@
         margin: 0 auto 1rem;
         flex: 0 0 150px;
       }
+      .name-typed-text {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -331,7 +345,7 @@
   <header id="header">
     <div id="particles-js"></div>
     <div class="stars"></div>
-    <h1 data-aos="zoom-in">Ravi Kumar</h1>
+    <h1 data-aos="zoom-in"><span class="name-typed-text">Ravi Kumar</span></h1>
     <p data-aos="fade-up" data-aos-delay="200" class="typed-text">Data Science Enthusiast | Python • SQL • Power BI • ML</p>
   </header>
 
@@ -414,7 +428,7 @@
       <div style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; background-color: #00d2ff; border-radius: 8px; transform: rotate(15deg);"></div>
       <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #00d2ff;">✨ Thank You! ✨</h3>
       <p style="line-height: 1.6; font-size: 1.1em;">
-        Your message has been successfully received, and it's now part of नेपाल my growing journey in Data Science!<br><br>
+        Your message has been successfully received, and it's now part of my growing journey in Data Science!<br><br>
         I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
         I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
       </p>
@@ -433,21 +447,66 @@
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // Initialize with your credentials
+    // Initialize EmailJS with your Public Key
     emailjs.init("JsY8KGiITHJueqlEs");
     
+    // Handle contact form submission
     document.getElementById("contact-form").addEventListener("submit", function(e) {
       e.preventDefault();
       
+      // Send contact form data using Service ID and Template ID
+      // Ensure template_32zpg14 is configured in EmailJS dashboard to send to travikumar6789@gmail.com
       emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
         .then(() => {
           document.getElementById("contact-form").style.display = "none";
           document.getElementById("success-message").style.display = "block";
         })
-        .catch(() => {
-          // Fallback to show message even if email fails
+        .catch((error) => {
+          console.log("Contact form email failed:", error);
+          // Show success UI even if email fails to avoid user confusion
           document.getElementById("contact-form").style.display = "none";
           document.getElementById("success-message").style.display = "block";
+        });
+    });
+
+    // Track portfolio views and send notification email
+    window.addEventListener("load", function() {
+      // Generate a unique session ID
+      const sessionId = Math.random().toString(36).substr(2, 9);
+      const timestamp = new Date().toISOString();
+
+      // Fetch visitor info using ipapi.co
+      fetch("https://ipapi.co/json/")
+        .then(response => response.json())
+        .then(data => {
+          const visitorInfo = {
+            session_id: sessionId,
+            ip: data.ip || "Unknown",
+            city: data.city || "Unknown",
+            country: data.country_name || "Unknown",
+            timestamp: timestamp
+          };
+
+          // Send portfolio view notification
+          // Replace 'template_portfolio_view' with your actual template ID after creating it
+          emailjs.send("service_btbvq2d", "template_portfolio_view", visitorInfo)
+            .then(() => {
+              console.log("Portfolio view notification sent");
+            })
+            .catch(error => {
+              console.log("Portfolio view notification failed:", error);
+            });
+        })
+        .catch(error => {
+          console.log("Failed to fetch visitor info:", error);
+          // Send minimal info if API fails
+          emailjs.send("service_btbvq2d", "template_portfolio_view", {
+            session_id: sessionId,
+            ip: "Unknown",
+            city: "Unknown",
+            country: "Unknown",
+            timestamp: timestamp
+          });
         });
     });
   </script>
@@ -464,21 +523,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    // Initialize with YOUR credentials
-    emailjs.init("JsY8KGiITHJueqlEs"); // Public Key
+    // Initialize EmailJS with your Public Key (repeated for redundancy)
+    emailjs.init("JsY8KGiITHJueqlEs");
     
+    // Handle contact form submission (redundant script for compatibility)
     document.getElementById("contact-form").addEventListener("submit", function(e) {
       e.preventDefault();
       
-      // Send using your Service and Template IDs
+      // Send contact form data using Service ID and Template ID
+      // Ensure template_32zpg14 is configured in EmailJS dashboard to send to travikumar6789@gmail.com
       emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
         .then(() => {
           document.getElementById("contact-form").style.display = "none";
           document.getElementById("success-message").style.display = "block";
         })
         .catch((error) => {
-          console.log("Email failed:", error);
-          // Still show success UI even if email fails
+          console.log("Contact form email failed:", error);
+          // Show success UI even if email fails
           document.getElementById("contact-form").style.display = "none";
           document.getElementById("success-message").style.display = "block";
         });
