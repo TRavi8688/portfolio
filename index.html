@@ -392,98 +392,98 @@
     <h2>Blog</h2>
     <p>Coming soon! I'll be sharing my thoughts, articles, and tutorials on Data Science, AI, and more...</p>
   </section>
-<section id="contact" class="contact" data-aos="fade-up">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">linkedin.com/in/t-ravi-kumar</a></p>
-  <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
-  <p>Location: Hyderabad, Siddiq Nagar</p>
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:travikumar6789@gmail.com">travikumar6789@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">linkedin.com/in/t-ravi-kumar</a></p>
+    <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
+    <p>Location: Hyderabad, Siddiq Nagar</p>
 
-  <form id="contact-form">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
 
-  <!-- Modern 3D Success Message -->
-  <div id="success-message" style="display: none; padding: 30px; border-radius: 12px; margin: 20px auto; max-width: 600px; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-    <div style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; background-color: #00d2ff; border-radius: 8px; transform: rotate(15deg);"></div>
-    <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #00d2ff;">✨ Thank You! ✨</h3>
-    <p style="line-height: 1.6; font-size: 1.1em;">
-      Your message has been successfully received, and it's now part of my growing journey in Data Science!<br><br>
-      I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
-      I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
-    </p>
-  </div>
-</section>
+    <!-- Modern 3D Success Message -->
+    <div id="success-message" style="display: none; padding: 30px; border-radius: 12px; margin: 20px auto; max-width: 600px; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+      <div style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; background-color: #00d2ff; border-radius: 8px; transform: rotate(15deg);"></div>
+      <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #00d2ff;">✨ Thank You! ✨</h3>
+      <p style="line-height: 1.6; font-size: 1.1em;">
+        Your message has been successfully received, and it's now part of नेपाल my growing journey in Data Science!<br><br>
+        I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
+        I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
+      </p>
+    </div>
+  </section>
 
-<style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  #success-message {
-    animation: float 3s ease-in-out infinite;
-  }
-</style>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    #success-message {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  // Initialize with your credentials
-  emailjs.init("JsY8KGiITHJueqlEs");
-  
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Initialize with your credentials
+    emailjs.init("JsY8KGiITHJueqlEs");
     
-    emailjs.sendForm("service_5w8apsd", "template_32zpg14", e.target)
-      .then(() => {
-        document.getElementById("contact-form").style.display = "none";
-        document.getElementById("success-message").style.display = "block";
-      })
-      .catch(() => {
-        // Fallback to show message even if email fails
-        document.getElementById("contact-form").style.display = "none";
-        document.getElementById("success-message").style.display = "block";
-      });
-  });
-</script>
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
+        .then(() => {
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        })
+        .catch(() => {
+          // Fallback to show message even if email fails
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        });
+    });
+  </script>
 
-<style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; }
-    50% { transform: translateY(-15px) rotateY(8deg); box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 0 3px #00f2fe; }
-  }
-  
-  /* Add this to your main CSS */
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  // Initialize with YOUR credentials
-  emailjs.init("JsY8KGiITHJueqlEs"); // Public Key
-  
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; }
+      50% { transform: translateY(-15px) rotateY(8deg); box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 0 3px #00f2fe; }
+    }
     
-    // Send using your Service and Template IDs
-    emailjs.sendForm("service_5w8apsd", "template_32zpg14", e.target)
-      .then(() => {
-        document.getElementById("contact-form").style.display = "none";
-        document.getElementById("success-message").style.display = "block";
-      })
-      .catch((error) => {
-        console.log("Email failed:", error);
-        // Still show success UI even if email fails
-        document.getElementById("contact-form").style.display = "none";
-        document.getElementById("success-message").style.display = "block";
-      });
-  });
-</script>
+    /* Add this to your main CSS */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Initialize with YOUR credentials
+    emailjs.init("JsY8KGiITHJueqlEs"); // Public Key
+    
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Send using your Service and Template IDs
+      emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
+        .then(() => {
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        })
+        .catch((error) => {
+          console.log("Email failed:", error);
+          // Still show success UI even if email fails
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        });
+    });
+  </script>
 
   <a href="#" class="back-to-top">↑</a>
 
@@ -491,7 +491,7 @@
     <div class="footer-links">
       <a href="https://github.com/TRavi8688" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/t-ravi-kumar-038a3b345" target="_blank">LinkedIn</a>
-      <a href="mailto:travikumartravikumar00@gmail.com">Email</a>
+      <a href="mailto:travikumar6789@gmail.com">Email</a>
     </div>
     <p>© 2025 Ravi Kumar | Built with ❤️ for Data Science</p>
   </footer>
