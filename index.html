@@ -6,51 +6,88 @@
     <title>T. Ravi Kumar - Data Scientist Portfolio</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f2f5; /* Soft light gray background */
             color: #333;
+            line-height: 1.6;
         }
+        
+        /* Hero Section (Header) Styling */
         header {
-            background-color: #333;
+            background: linear-gradient(135deg, #2c3e50, #34495e); /* Dark blue-gray gradient */
             color: #fff;
-            padding: 1em 0;
+            padding: 60px 20px; /* More vertical padding */
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
         }
+        header h1 {
+            font-size: 3.5em; /* Larger name */
+            margin-bottom: 10px;
+            letter-spacing: 2px; /* Spacing for classy look */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        header p {
+            font-size: 1.5em; /* Larger title */
+            opacity: 0.9;
+        }
+
         nav {
             display: flex;
             justify-content: center;
-            background-color: #444;
-            padding: 0.7em 0;
+            background-color: #ffffff; /* White navigation background */
+            padding: 1em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav a {
-            color: #fff;
+            color: #2c3e50; /* Dark text for navigation */
             padding: 0.7em 1.5em;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         nav a:hover {
-            background-color: #555;
+            background-color: #e0e0e0; /* Lighter hover */
+            color: #1abc9c; /* Accent color on hover */
         }
         .container {
-            width: 80%;
-            margin: auto;
+            width: 85%; /* Slightly wider container */
+            max-width: 1200px; /* Max width for large screens */
+            margin: 20px auto;
             overflow: hidden;
             padding: 20px 0;
         }
         section {
-            padding: 20px 0;
-            margin-bottom: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px; /* Increased padding */
+            margin-bottom: 25px; /* More spacing between sections */
+            background-color: #ffffff;
+            border-radius: 10px; /* More rounded corners */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* More pronounced but soft shadow */
+            transition: transform 0.2s ease-in-out;
+        }
+        section:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
         }
         h2 {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+            color: #2c3e50; /* Dark heading color */
+            margin-bottom: 30px; /* More space below heading */
+            font-size: 2.2em;
+            position: relative;
+        }
+        h2::after { /* Underline effect for headings */
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #1abc9c; /* Accent color */
+            margin: 10px auto 0;
+            border-radius: 5px;
         }
         .summary, .skills-list, .experience-item, .project-grid, .education-item, .certification-item, .language-item, .award-item, .blog-post {
             padding: 0 20px;
@@ -61,119 +98,134 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 12px; /* Increased gap */
         }
         .skills-list li {
-            background-color: #eee;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            background-color: #e9ecef; /* Lighter skill tag background */
+            padding: 10px 18px; /* More padding for skill tags */
+            border-radius: 20px; /* Pill shape for skill tags */
+            font-size: 0.95em;
+            color: #555;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .experience-item, .education-item, .certification-item, .language-item, .award-item {
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* More space */
             border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
         }
         .experience-item:last-child, .education-item:last-child, .certification-item:last-child, .language-item:last-child, .award-item:last-child {
             border-bottom: none;
         }
         .experience-item h3, .education-item h3, .certification-item h3, .language-item h3, .award-item h3 {
-            color: #555;
+            color: #34495e; /* Darker sub-headings */
             margin-top: 0;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.3em;
         }
         .experience-item p, .education-item p, .certification-item p, .language-item p, .award-item p {
             margin: 0;
-            font-size: 0.9em;
+            font-size: 0.95em;
             color: #666;
+        }
+        .experience-item ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 0;
+            color: #555;
         }
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider min width */
+            gap: 30px; /* Increased gap */
             padding: 20px;
         }
         .project-card {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border: 1px solid #eee;
+            border-radius: 10px; /* More rounded */
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         .project-card img {
             width: 100%;
-            height: 180px;
+            height: 200px; /* Taller images */
             object-fit: cover;
             border-bottom: 1px solid #ddd;
         }
         .project-card h4 {
-            color: #333;
+            color: #2c3e50;
             margin: 15px 0 10px;
+            font-size: 1.2em;
         }
         .project-card p {
             font-size: 0.9em;
             color: #666;
-            padding: 0 15px 15px;
+            padding: 0 15px 20px; /* More padding at bottom */
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 20px;
-        }
-
-        /* Blog Section Styling (Space with Avengers Theme) */
-        .blog-section {
-            background-image: url('https://via.placeholder.com/1920x1080?text=Futuristic+Space+Background'); /* Placeholder, replace with actual image URL */
-            background-size: cover;
-            background-position: center;
-            color: #e0e0e0; /* Lighter text for dark background */
-            padding: 40px 0;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Glowing effect */
-        }
-        .blog-section h2 {
-            color: #00ffff; /* Cyan glow for heading */
-            text-shadow: 0 0 10px #00ffff;
-        }
+        
+        /* Blog Section Styling - Reverted to clean, professional look */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             padding: 20px;
         }
         .blog-post {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
-            border: 1px solid #00ffff; /* Cyan border */
+            background-color: #f9f9f9; /* Slightly off-white for distinction */
+            border: 1px solid #eee;
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            transition: transform 0.3s ease-in-out;
+            padding: 25px; /* More padding */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .blog-post:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         .blog-post h3 {
-            color: #fff;
+            color: #2c3e50;
             margin-top: 0;
             font-size: 1.4em;
+            margin-bottom: 10px;
         }
         .blog-post p {
-            color: #b0b0b0;
+            color: #666;
             font-size: 0.95em;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         .blog-post .read-more {
             display: inline-block;
             margin-top: 15px;
-            color: #00ffff;
+            color: #1abc9c; /* Accent color for links */
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
         .blog-post .read-more:hover {
+            color: #16a085; /* Slightly darker accent on hover */
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #2c3e50; /* Dark footer background */
+            color: #ecf0f1; /* Light text */
+            margin-top: 30px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        footer a:hover {
             text-decoration: underline;
         }
     </style>
@@ -257,29 +309,29 @@
             <h2>Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180?text=Loan+Approval+Prediction" alt="Screenshot of Loan Approval Prediction project">
+                    <img src="https://via.placeholder.com/300x200?text=Loan+Approval+Prediction" alt="Screenshot of Loan Approval Prediction project">
                     <h4>Loan Approval Prediction</h4>
                     <p>Developed a machine learning model using scikit-learn to predict loan approval status, probability, and risk category for over 8,000 records. Preprocessing with Pandas and NumPy, deployed via Gradio on Hugging Face Spaces.</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180?text=Facial+Expression+Classification" alt="Screenshot of Facial Expression Classification project">
+                    <img src="https://via.placeholder.com/300x200?text=Facial+Expression+Classification" alt="Screenshot of Facial Expression Classification project">
                     <h4>Facial Expression Classification</h4>
                     <p>Developed a deep learning model using TensorFlow to classify seven facial expressions in grayscale images with high validation accuracy. Preprocessing of 10,000+ records using Pandas and NumPy, deployed on Hugging Face.</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180?text=Retail+Sales+Forecasting+Dashboard" alt="Screenshot of Retail Sales Forecasting Dashboard project">
+                    <img src="https://via.placeholder.com/300x200?text=Retail+Sales+Forecasting+Dashboard" alt="Screenshot of Retail Sales Forecasting Dashboard project">
                     <h4>Retail Sales Forecasting Dashboard</h4>
                     <p>Developed a time-series forecasting model using TensorFlow and scikit-learn on a Kaggle retail dataset, achieving high accuracy. Deployed via Streamlit on Hugging Face Spaces for real-time sales predictions.</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180?text=Power+BI+Dashboard" alt="Screenshot of Power BI Dashboard project">
+                    <img src="https://via.placeholder.com/300x200?text=Power+BI+Dashboard" alt="Screenshot of Power BI Dashboard project">
                     <h4>Power BI Dashboard</h4>
                     <p>Built a Power BI dashboard with line charts, treemaps, heatmaps, and slicers for 10,000+ records, cleaned in SQL Server and preprocessed with Pandas and NumPy, optimizing inventory by 15%.</p>
                 </div>
             </div>
         </section>
 
-        <section id="blog" class="blog-section">
+        <section id="blog">
             <h2>Blog Posts</h2>
             <div class="blog-grid">
                 <div class="blog-post">
