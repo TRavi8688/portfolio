@@ -1,416 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T. Ravi Kumar - Data Scientist Portfolio</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5; /* Soft light gray background */
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Hero Section (Header) Styling */
-        header {
-            background: linear-gradient(135deg, #2c3e50, #34495e); /* Dark blue-gray gradient */
-            color: #fff;
-            padding: 60px 20px; /* More vertical padding */
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-        }
-        header h1 {
-            font-size: 3.5em; /* Larger name */
-            margin-bottom: 10px;
-            letter-spacing: 2px; /* Spacing for classy look */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        header p {
-            font-size: 1.5em; /* Larger title */
-            opacity: 0.9;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #ffffff; /* White navigation background */
-            padding: 1em 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav a {
-            color: #2c3e50; /* Dark text for navigation */
-            padding: 0.7em 1.5em;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #e0e0e0; /* Lighter hover */
-            color: #1abc9c; /* Accent color on hover */
-        }
-        .container {
-            width: 85%; /* Slightly wider container */
-            max-width: 1200px; /* Max width for large screens */
-            margin: 20px auto;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-        section {
-            padding: 30px; /* Increased padding */
-            margin-bottom: 25px; /* More spacing between sections */
-            background-color: #ffffff;
-            border-radius: 10px; /* More rounded corners */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* More pronounced but soft shadow */
-            transition: transform 0.2s ease-in-out;
-        }
-        section:hover {
-            transform: translateY(-3px); /* Subtle lift on hover */
-        }
-        h2 {
-            text-align: center;
-            color: #2c3e50; /* Dark heading color */
-            margin-bottom: 30px; /* More space below heading */
-            font-size: 2.2em;
-            position: relative;
-        }
-        h2::after { /* Underline effect for headings */
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #1abc9c; /* Accent color */
-            margin: 10px auto 0;
-            border-radius: 5px;
-        }
-        .summary, .skills-list, .experience-item, .project-grid, .education-item, .certification-item, .language-item, .award-item, .blog-post {
-            padding: 0 20px;
-        }
-        .skills-list ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px; /* Increased gap */
-        }
-        .skills-list li {
-            background-color: #e9ecef; /* Lighter skill tag background */
-            padding: 10px 18px; /* More padding for skill tags */
-            border-radius: 20px; /* Pill shape for skill tags */
-            font-size: 0.95em;
-            color: #555;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        .experience-item, .education-item, .certification-item, .language-item, .award-item {
-            margin-bottom: 20px; /* More space */
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-        .experience-item:last-child, .education-item:last-child, .certification-item:last-child, .language-item:last-child, .award-item:last-child {
-            border-bottom: none;
-        }
-        .experience-item h3, .education-item h3, .certification-item h3, .language-item h3, .award-item h3 {
-            color: #34495e; /* Darker sub-headings */
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 1.3em;
-        }
-        .experience-item p, .education-item p, .certification-item p, .language-item p, .award-item p {
-            margin: 0;
-            font-size: 0.95em;
-            color: #666;
-        }
-        .experience-item ul {
-            list-style: disc;
-            margin-left: 20px;
-            padding-left: 0;
-            color: #555;
-        }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider min width */
-            gap: 30px; /* Increased gap */
-            padding: 20px;
-        }
-        .project-card {
-            background-color: #ffffff;
-            border: 1px solid #eee;
-            border-radius: 10px; /* More rounded */
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .project-card img {
-            width: 100%;
-            height: 200px; /* Taller images */
-            object-fit: cover;
-            border-bottom: 1px solid #ddd;
-        }
-        .project-card h4 {
-            color: #2c3e50;
-            margin: 15px 0 10px;
-            font-size: 1.2em;
-        }
-        .project-card p {
-            font-size: 0.9em;
-            color: #666;
-            padding: 0 15px 20px; /* More padding at bottom */
-        }
-        
-        /* Blog Section Styling - Reverted to clean, professional look */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-        .blog-post {
-            background-color: #f9f9f9; /* Slightly off-white for distinction */
-            border: 1px solid #eee;
-            border-radius: 10px;
-            padding: 25px; /* More padding */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        .blog-post h3 {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-        .blog-post p {
-            color: #666;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        .blog-post .read-more {
-            display: inline-block;
-            margin-top: 15px;
-            color: #1abc9c; /* Accent color for links */
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .blog-post .read-more:hover {
-            color: #16a085; /* Slightly darker accent on hover */
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background-color: #2c3e50; /* Dark footer background */
-            color: #ecf0f1; /* Light text */
-            margin-top: 30px;
-            font-size: 0.9em;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer a {
-            color: #1abc9c;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="T. Ravi Kumar's Data Science Portfolio" />
+  <title>T. Ravi Kumar | Data Science Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0A0E1A;
+      color: #E0E0E0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      position: relative;
+      background: linear-gradient(180deg, #0A0E1A, #000000);
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 4px solid #00F0FF;
+      overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
+      margin-bottom: 0.5rem;
+      z-index: 1;
+    }
+    header p {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      opacity: 0.9;
+      z-index: 1;
+    }
+    .typed-text {
+      font-family: 'Orbitron', sans-serif;
+      color: #00F0FF;
+      border-right: 2px solid #00F0FF;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    .name-typed-text {
+      font-family: 'Orbitron', sans-serif;
+      color: #00F0FF;
+      border-right: 2px solid #00F0FF;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #00F0FF; }
+    }
+    nav {
+      background: rgba(10, 14, 26, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 240, 255, 0.2);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #00F0FF;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 400;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00F0FF;
+      transform: translateY(-3px);
+    }
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: #141A2F;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+    }
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: #00F0FF;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #00F0FF;
+      cursor: pointer;
+    }
+    .about {
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .about-photo {
+      flex: 0 0 200px;
+      border: 4px solid #00F0FF;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00F0FF;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .about-content {
+      flex: 1;
+    }
+    .skills ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .skills li {
+      background: #1A2238;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #8B00FF;
+      transition: transform 0.3s ease;
+    }
+    .skills li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+    }
+    .projects .filter-buttons {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .projects .filter-btn {
+      background: #1A2238;
+      color: #00F0FF;
+      border: 1px solid #00F0FF;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+    }
+    .projects .filter-btn:hover, .projects .filter-btn.active {
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      box-shadow: 0 0 10px #00F0FF;
+    }
+    .projects .project-card {
+      background: #1A2238;
+      padding: 1.5rem;
+      border-left: 4px solid #00F0FF;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: none;
+    }
+    .projects .project-card.show {
+      display: block;
+    }
+    .projects .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #8B00FF, #00F0FF);
+      box-shadow: 0 0 15px #00F0FF;
+      transform: translateY(-3px);
+    }
+    .resume .resume-content {
+      background: #1A2238;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid #00F0FF;
+      margin-top: 1rem;
+    }
+    .resume .resume-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #8B00FF;
+      margin-bottom: 0.5rem;
+    }
+    .resume .resume-content p, .resume .resume-content ul {
+      margin-bottom: 1rem;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #00F0FF, #8B00FF);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 10px #00F0FF;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00F0FF;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0A0E1A;
+      color: #E0E0E0;
+      border-top: 2px solid #00F0FF;
+    }
+    footer .footer-links a {
+      color: #00F0FF;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    footer .footer-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00F0FF;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #00F0FF;
+      border-radius: 5px;
+      background: #1A2238;
+      color: #E0E0E0;
+      font-family: 'Roboto', sans-serif;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00F0FF;
+    }
+    @media (max-width: 768px) {
+      body {
+        cursor: default;
+      }
+      header {
+        padding: 80px 15px;
+        min-height: 80vh;
+      }
+      header h1 {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+      }
+      header p {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+      }
+      section {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+      .projects .filter-btn {
+        padding: 0.4rem 0.8rem;
+        margin: 0 0.3rem;
+        font-size: 0.9rem;
+      }
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-photo {
+        margin: 0 auto 1rem;
+        flex: 0 0 150px;
+      }
+      .name-typed-text {
+        font-size: clamp(2rem, 6vw, 2.5rem);
+      }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; }
+      50% { transform: translateY(-15px) rotateY(8deg); box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 0 3px #00f2fe; }
+    }
+    #success-message {
+      animation: float 3s ease-in-out infinite;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+  </style>
 </head>
 <body>
-    <header>
-        <h1>T. Ravi Kumar</h1>
-        <p>Data Scientist</p>
-    </header>
-
-    <nav>
-        <a href="#summary">Summary</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#blog">Blog</a> <a href="#resume">Resume</a> <a href="#education">Education</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#languages">Languages</a>
-        <a href="#awards">Awards</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="container">
-        <section id="summary">
-            <h2>Summary</h2>
-            <div class="summary">
-                <p>Data Science enthusiast skilled in Python, SQL, Pandas, scikit-learn, TensorFlow, and machine learning. Proficient in predictive modeling, data analysis, and model deployment for finance and emotion analytics. Delivered 5+ projects with high accuracy, pursuing Data Science training at TEKS Academy.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-list">
-                <h3>Programming:</h3>
-                <ul>
-                    <li>Python</li>
-                    <li>SQL</li>
-                </ul>
-                <h3>Tools:</h3>
-                <ul>
-                    <li>Pandas</li>
-                    <li>NumPy</li>
-                    <li>scikit-learn</li>
-                    <li>TensorFlow</li>
-                    <li>Streamlit</li>
-                    <li>SQL Server</li>
-                </ul>
-                <h3>Expertise:</h3>
-                <ul>
-                    <li>Machine Learning</li>
-                    <li>Deep Learning</li>
-                    <li>Data Analysis</li>
-                    <li>Predictive Modeling</li>
-                    <li>Model Deployment</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <h3>Junior Data Scientist</h3>
-                <p><strong>Infoz</strong> | 02/2025 - 08/2025</p>
-                <ul>
-                    <li>Developed machine learning models with high accuracy using scikit-learn.</li>
-                    <li>Optimized SQL queries and data pipelines for analysis of 10,000+ data points.</li>
-                    <li>Collaborated on data-driven strategies, improving decision-making processes.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>Python Long Term Internship</h3>
-                <p><strong>Chathrapathi Greentech Softwares Pvt</strong> | 12/2024 - 02/2025</p>
-                <ul>
-                    <li>Developed Python scripts using Pandas and NumPy to preprocess datasets, reducing data processing time by 20%.</li>
-                    <li>Built predictive models with scikit-learn to analyze company data, enhancing business analytics insights.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/300x200?text=Loan+Approval+Prediction" alt="Screenshot of Loan Approval Prediction project">
-                    <h4>Loan Approval Prediction</h4>
-                    <p>Developed a machine learning model using scikit-learn to predict loan approval status, probability, and risk category for over 8,000 records. Preprocessing with Pandas and NumPy, deployed via Gradio on Hugging Face Spaces.</p>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/300x200?text=Facial+Expression+Classification" alt="Screenshot of Facial Expression Classification project">
-                    <h4>Facial Expression Classification</h4>
-                    <p>Developed a deep learning model using TensorFlow to classify seven facial expressions in grayscale images with high validation accuracy. Preprocessing of 10,000+ records using Pandas and NumPy, deployed on Hugging Face.</p>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/300x200?text=Retail+Sales+Forecasting+Dashboard" alt="Screenshot of Retail Sales Forecasting Dashboard project">
-                    <h4>Retail Sales Forecasting Dashboard</h4>
-                    <p>Developed a time-series forecasting model using TensorFlow and scikit-learn on a Kaggle retail dataset, achieving high accuracy. Deployed via Streamlit on Hugging Face Spaces for real-time sales predictions.</p>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/300x200?text=Power+BI+Dashboard" alt="Screenshot of Power BI Dashboard project">
-                    <h4>Power BI Dashboard</h4>
-                    <p>Built a Power BI dashboard with line charts, treemaps, heatmaps, and slicers for 10,000+ records, cleaned in SQL Server and preprocessed with Pandas and NumPy, optimizing inventory by 15%.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog">
-            <h2>Blog Posts</h2>
-            <div class="blog-grid">
-                <div class="blog-post">
-                    <h3>The Future of AI in Finance</h3>
-                    <p>Exploring how artificial intelligence is revolutionizing financial services, from algorithmic trading to fraud detection and personalized banking experiences. The impact of machine learning on market predictions and risk assessment.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="blog-post">
-                    <h3>Deep Learning for Emotion Recognition</h3>
-                    <p>A dive into the world of deep learning applications for understanding and classifying human emotions from various inputs like facial expressions and voice. Discussing the challenges and ethical considerations.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="blog-post">
-                    <h3>Unlocking Insights with Time Series Forecasting</h3>
-                    <p>Understanding the power of time series models in predicting future trends based on historical data. Case studies in retail sales, stock market, and weather forecasting, and the algorithms behind them.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="resume"> <h2>Resume</h2>
-            <p>You can download my full resume here: <a href="uploaded:T_Ravi_Data_Scientist_Resume..pdf" target="_blank">Download T. Ravi Kumar's Resume (PDF)</a></p>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>BCA, AI and Data Science</h3>
-                <p><strong>Vikrama Simhapuri University, Nellore</strong> | 09/2022 - 06/2025</p>
-                <p>Studied Python, SQL, machine learning, and statistical analysis.</p>
-            </div>
-        </section>
-
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="certification-item">
-                <h3>Post Graduate Diploma in Data Science</h3>
-                <p>2022</p>
-            </div>
-            <div class="certification-item">
-                <h3>Certificate in Multimedia Basics</h3>
-                <p><strong>A.P. Modell Junior College</strong> | 2022</p>
-            </div>
-        </section>
-
-        <section id="languages">
-            <h2>Languages</h2>
-            <div class="language-item">
-                <ul>
-                    <li>Telugu</li>
-                    <li>English</li>
-                    <li>Hindi</li>
-                    <li>Urdu</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="awards">
-            <h2>Awards</h2>
-            <div class="award-item">
-                <p>2 NSS Certificates for community service.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p style="text-align: center;">
-                Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a><br>
-                Phone: +91-8688533605<br>
-                LinkedIn: <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">linkedin.com/in/t-ravikumar-038a3b345</a><br>
-                GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a><br>
-                Portfolio: <a href="https://travi8688.github.io/portfolio" target="_blank">travi8688.github.io/portfolio</a><br>
-                Hugging Face: <a href="https://huggingface.co/ravi86" target="_blank">huggingface.co/ravi86</a>
-            </p>
-        </section>
+  <header id="header">
+    <canvas id="hero-canvas"></canvas>
+    <h1 data-aos="zoom-in"><span class="name-typed-text">T. Ravi Kumar</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="typed-text">Data Science Enthusiast | Python • SQL • TensorFlow • ML</p>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <section id="about" class="about" data-aos="fade-up">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>I'm T. Ravi Kumar, a dedicated Data Science student at Vikrama Simhapuri University, pursuing a BCA in AI and Data Science. Skilled in Python, SQL, Pandas, scikit-learn, TensorFlow, and machine learning, I specialize in predictive modeling and data analysis for finance and emotion analytics. Currently enhancing my expertise through a Data Science course at TEKS Academy, I have delivered over 5 projects with high accuracy. My goal is to leverage data to solve real-world challenges.</p>
     </div>
+  </section>
+  <section id="skills" class="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Programming Languages:</strong> Python, SQL</li>
+      <li><strong>Libraries:</strong> Pandas, NumPy, scikit-learn, TensorFlow</li>
+      <li><strong>Tools:</strong> Streamlit, SQL Server, Power BI, Git</li>
+      <li><strong>Concepts:</strong> Machine Learning, Deep Learning, Data Analysis, Predictive Modeling, Model Deployment</li>
+    </ul>
+  </section>
+  <section id="projects" class="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <button class="filter-btn" data-filter="powerbi">Power BI</button>
+    </div>
+    <div class="project-card ml" data-aos="flip-left">
+      <img src="https://via.placeholder.com/300x150?text=Loan+Approval" alt="Loan Approval Prediction Screenshot">
+      <h3>🔍 Loan Approval Prediction (ICE)</h3>
+      <p>Developed a machine learning model using Random Forest and XGBoost in scikit-learn to predict loan approval status, probability, and risk category for over 8,000 records. Preprocessed data with Pandas and NumPy, deployed via Gradio on Hugging Face Spaces.</p>
+      <a class="btn" href="https://huggingface.co/spaces/ravi868/ICE" target="_blank">View on Hugging Face</a>
+    </div>
+    <div class="project-card ml" data-aos="flip-left" data-aos-delay="100">
+      <img src="https://via.placeholder.com/300x150?text=Facial+Expression" alt="Facial Expression Classification Screenshot">
+      <h3>😊 Facial Expression Classification</h3>
+      <p>Built a deep learning model using TensorFlow to classify seven facial expressions (Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral) in grayscale images. Preprocessed 10,000+ records with Pandas and NumPy, deployed on Hugging Face Spaces.</p>
+      <a class="btn" href="https://huggingface.co/spaces/ravi868/Facial_Expression_Classification" target="_blank">View on Hugging Face</a>
+    </div>
+    <div class="project-card powerbi" data-aos="flip-left" data-aos-delay="200">
+      <img src="https://via.placeholder.com/300x150?text=Retail+Sales" alt="Retail Sales Forecasting Screenshot">
+      <h3>📊 Retail Sales Forecasting Dashboard</h3>
+      <p>Developed a time-series forecasting model using TensorFlow and scikit-learn on a Google retail dataset. Built a Power BI dashboard with line charts, treemaps, heatmaps, and slicers for 10,000+ records, optimized inventory by 15%. Deployed via Streamlit on Hugging Face Spaces.</p>
+      <a class="btn" href="https://huggingface.co/spaces/ravi868/Retail_Sales_Forecasting" target="_blank">View on Hugging Face</a>
+    </div>
+  </section>
+  <section id="resume" class="resume" data-aos="fade-up">
+    <h2>Resume</h2>
+    <div class="resume-content">
+      <h3>Experience</h3>
+      <p><strong>Chathrapathi Greentech Softwares Pvt, Python Long Term Internship</strong><br>
+      - Developed Python scripts using Pandas and NumPy to preprocess datasets, reducing data processing time by 20%.<br>
+      - Built predictive models with scikit-learn to analyze company data, enhancing business analytics insights.</p>
+      <p><strong>Infox, Junior Data Scientist</strong><br>
+      - Developed machine learning models with high accuracy using scikit-learn.<br>
+      - Optimized SQL queries and data pipelines for analysis of 10,000+ data points.<br>
+      - Collaborated with cross-functional teams to deploy predictive models into production, improving decision-making efficiency by 20%.</p>
+      <h3>Education</h3>
+      <p><strong>BCA, AI and Data Science, Vikrama Simhapuri University, Nellore</strong><br>
+      09/2022 - 06/2025<br>
+      - Studied Python, SQL, machine learning, and statistical analysis.</p>
+      <h3>Certifications</h3>
+      <ul>
+        <li>Post Graduate Diploma in Data Science, 2022</li>
+        <li>Certificate in Multimedia Basics, A.P. Modell Junior College, 2022</li>
+      </ul>
+      <h3>Languages</h3>
+      <ul>
+        <li>Telugu, English, Hindi, Urdu</li>
+      </ul>
+      <h3>Awards</h3>
+      <ul>
+        <li>2 NSS Certificates for community service, 2024</li>
+        <li>Ministry of Youth Affairs and Sports Certificate, 2024</li>
+      </ul>
+    </div>
+    <a class="btn" href="T_Ravi_Data_Scientist_Resume.pdf" download>Download Resume</a>
+  </section>
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">linkedin.com/in/t-ravikumar-038a3b345</a></p>
+    <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
+    <p>Hugging Face: <a href="https://huggingface.co/ravi868" target="_blank">huggingface.co/ravi868</a></p>
+    <p>Location: Hyderabad, India</p>
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <div id="success-message" style="display: none; padding: 30px; border-radius: 12px; margin: 20px auto; max-width: 600px; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
+      <div style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; background-color: #00d2ff; border-radius: 8px; transform: rotate(15deg);"></div>
+      <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #00d2ff;">✨ Thank You! ✨</h3>
+      <p style="line-height: 1.6; font-size: 1.1em;">
+        Your message has been successfully received, and it's now part of my growing journey in Data Science!<br><br>
+        I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
+        I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
+      </p>
+    </div>
+  </section>
+  <a href="#" class="back-to-top">↑</a>
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/TRavi8688" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">LinkedIn</a>
+      <a href="mailto:travikumartravikumar00@gmail.com">Email</a>
+      <a href="https://huggingface.co/ravi868" target="_blank">Hugging Face</a>
+    </div>
+    <p>© 2025 T. Ravi Kumar | Built with ❤️ for Data Science</p>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    emailjs.init("JsY8KGiITHJueqlEs");
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
+        .then(() => {
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        })
+        .catch((error) => {
+          console.log("Contact form email failed:", error);
+          document.getElementById("contact-form").style.display = "none";
+          document.getElementById("success-message").style.display = "block";
+        });
+    });
+    window.addEventListener("load", function() {
+      const sessionId = Math.random().toString(36).substr(2, 9);
+      const timestamp = new Date().toISOString();
+      fetch("https://ipapi.co/json/")
+        .then(response => response.json())
+        .then(data => {
+          const visitorInfo = {
+            session_id: sessionId,
+            ip: data.ip || "Unknown",
+            city: data.city || "Unknown",
+            country: data.country_name || "Unknown",
+            timestamp: timestamp
+          };
+          emailjs.send("service_btbvq2d", "template_portfolio_view", visitorInfo)
+            .then(() => {
+              console.log("Portfolio view notification sent");
+            })
+            .catch(error => {
+              console.log("Portfolio view notification failed:", error);
+            });
+        })
+        .catch(error => {
+          console.log("Failed to fetch visitor info:", error);
+          emailjs.send("service_btbvq2d", "template_portfolio_view", {
+            session_id: sessionId,
+            ip: "Unknown",
+            city: "Unknown",
+            country: "Unknown",
+            timestamp: timestamp
+          });
+        });
+    });
+    AOS.init({ duration: 1000, once: true });
+    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.classList.contains(filter)) {
+            card.classList.add('show');
+          } else {
+            card.classList.remove('show');
+          }
+        });
+      });
+    });
+    projectCards.forEach(card => card.classList.add('show'));
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    // Comprehensive Neural Network Animation with Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    camera.position.z = 50;
 
-    <footer>
-        <p>&copy; 2025 T. Ravi Kumar. All rights reserved.</p>
-    </footer>
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0x00F0FF, 1, 100);
+    pointLight.position.set(0, 0, 50);
+    scene.add(pointLight);
+
+    // Neural Network Layers
+    const layers = [
+      { nodes: 10, z: -20 }, // Input layer
+      { nodes: 8, z: 0 },   // Hidden layer 1
+      { nodes: 6, z: 20 },  // Hidden layer 2
+      { nodes: 4, z: 40 }   // Output layer
+    ];
+    const allNodes = [];
+
+    layers.forEach((layer, layerIndex) => {
+      for (let i = 0; i < layer.nodes; i++) {
+        const geometry = new THREE.SphereGeometry(0.8, 16, 16);
+        const material = new THREE.MeshBasicMaterial({
+          color: layerIndex === 0 ? 0x00F0FF : (layerIndex === layers.length - 1 ? 0x8B00FF : 0xA9A9A9),
+          transparent: true,
+          opacity: 0.9
+        });
+        const node = new THREE.Mesh(geometry, material);
+        node.position.set(
+          (i - (layer.nodes - 1) / 2) * 5,
+          (layerIndex - (layers.length - 1) / 2) * 10,
+          layer.z
+        );
+        node.pulseSpeed = Math.random() * 0.01 + 0.005;
+        scene.add(node);
+        allNodes.push(node);
+      }
+    });
+
+    // Connections between layers
+    const connections = [];
+    for (let i = 0; i < layers.length - 1; i++) {
+      for (let j = 0; j < layers[i].nodes; j++) {
+        for (let k = 0; k < layers[i + 1].nodes; k++) {
+          const geometry = new THREE.BufferGeometry();
+          const material = new THREE.LineBasicMaterial({ color: 0x00F0FF, transparent: true, opacity: 0.4 });
+          const points = [];
+          const startNode = allNodes[j + layers.slice(0, i).reduce((sum, l) => sum + l.nodes, 0)];
+          const endNode = allNodes[j + k + layers.slice(0, i + 1).reduce((sum, l) => sum + l.nodes, 0)];
+          points.push(startNode.position);
+          points.push(endNode.position);
+          geometry.setFromPoints(points);
+          const line = new THREE.Line(geometry, material);
+          scene.add(line);
+          connections.push(line);
+        }
+      }
+    }
+
+    function resizeRenderer() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    window.addEventListener('resize', resizeRenderer);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      allNodes.forEach(node => {
+        node.scale.x = node.scale.y = node.scale.z = 1 + Math.sin(Date.now() * node.pulseSpeed) * 0.2;
+      });
+      connections.forEach(connection => {
+        connection.geometry.attributes.position.needsUpdate = true;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
 </body>
 </html>
