@@ -1,622 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="T. Ravi Kumar's Data Science Portfolio" />
-  <title>T. Ravi Kumar | Data Science Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #0A0E1A;
-      color: #E0E0E0;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    header {
-      position: relative;
-      background: linear-gradient(180deg, #0A0E1A, #000000);
-      color: #fff;
-      padding: 100px 20px;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: 4px solid #00F0FF;
-      overflow: hidden;
-    }
-    #hero-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
-      margin-bottom: 0.5rem;
-      z-index: 1;
-    }
-    header p {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      opacity: 0.9;
-      z-index: 1;
-    }
-    .typed-text {
-      font-family: 'Orbitron', sans-serif;
-      color: #00F0FF;
-      border-right: 2px solid #00F0FF;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
-    .name-typed-text {
-      font-family: 'Orbitron', sans-serif;
-      color: #00F0FF;
-      border-right: 2px solid #00F0FF;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-      animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      text-shadow: 0 0 15px #00F0FF, 0 0 30px #8B00FF;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #00F0FF; }
-    }
-    nav {
-      background: rgba(10, 14, 26, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 240, 255, 0.2);
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #00F0FF;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 400;
-      padding: 0.5rem 1rem;
-      transition: all 0.3s ease;
-    }
-    nav a:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #00F0FF;
-      transform: translateY(-3px);
-    }
-    section {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 2rem;
-      background: #141A2F;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
-    }
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      color: #00F0FF;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 0 10px #00F0FF;
-      cursor: pointer;
-    }
-    .about {
-      padding: 2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-    }
-    .about-photo {
-      flex: 0 0 200px;
-      border: 4px solid #00F0FF;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00F0FF;
-      overflow: hidden;
-    }
-    .about-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .about-content {
-      flex: 1;
-    }
-    .skills ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .skills li {
-      background: #1A2238;
-      padding: 1rem;
-      border-radius: 8px;
-      border-left: 4px solid #8B00FF;
-      transition: transform 0.3s ease;
-    }
-    .skills li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
-    }
-    .projects .filter-buttons {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .projects .filter-btn {
-      background: #1A2238;
-      color: #00F0FF;
-      border: 1px solid #00F0FF;
-      padding: 0.5rem 1rem;
-      margin: 0 0.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      transition: all 0.3s ease;
-    }
-    .projects .filter-btn:hover, .projects .filter-btn.active {
-      background: linear-gradient(45deg, #00F0FF, #8B00FF);
-      color: #fff;
-      box-shadow: 0 0 10px #00F0FF;
-    }
-    .projects .project-card {
-      background: #1A2238;
-      padding: 1.5rem;
-      border-left: 4px solid #00F0FF;
-      border-radius: 12px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: none;
-    }
-    .projects .project-card.show {
-      display: block;
-    }
-    .projects .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
-    }
-    .project-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    .btn {
-      background: linear-gradient(45deg, #00F0FF, #8B00FF);
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
-      font-family: 'Orbitron', sans-serif;
-    }
-    .btn:hover {
-      background: linear-gradient(45deg, #8B00FF, #00F0FF);
-      box-shadow: 0 0 15px #00F0FF;
-      transform: translateY(-3px);
-    }
-    .resume .resume-content {
-      background: #1A2238;
-      padding: 1.5rem;
-      border-radius: 12px;
-      border-left: 4px solid #00F0FF;
-      margin-top: 1rem;
-    }
-    .resume .resume-content h3 {
-      font-family: 'Orbitron', sans-serif;
-      color: #8B00FF;
-      margin-bottom: 0.5rem;
-    }
-    .resume .resume-content p, .resume .resume-content ul {
-      margin-bottom: 1rem;
-    }
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(45deg, #00F0FF, #8B00FF);
-      color: #fff;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
-      box-shadow: 0 0 10px #00F0FF;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-    .back-to-top:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #00F0FF;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0A0E1A;
-      color: #E0E0E0;
-      border-top: 2px solid #00F0FF;
-    }
-    footer .footer-links a {
-      color: #00F0FF;
-      margin: 0 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    footer .footer-links a:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #00F0FF;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #00F0FF;
-      border-radius: 5px;
-      background: #1A2238;
-      color: #E0E0E0;
-      font-family: 'Roboto', sans-serif;
-    }
-    form input:focus, form textarea:focus {
-      outline: none;
-      box-shadow: 0 0 10px #00F0FF;
-    }
-    @media (max-width: 768px) {
-      body {
-        cursor: default;
-      }
-      header {
-        padding: 80px 15px;
-        min-height: 80vh;
-      }
-      header h1 {
-        font-size: clamp(2rem, 6vw, 2.5rem);
-      }
-      header p {
-        font-size: clamp(1rem, 3vw, 1.2rem);
-      }
-      nav a {
-        margin: 0 10px;
-        font-size: 0.9rem;
-      }
-      section {
-        margin: 2rem 1rem;
-        padding: 1.5rem;
-      }
-      h2 {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-      }
-      .projects .filter-btn {
-        padding: 0.4rem 0.8rem;
-        margin: 0 0.3rem;
-        font-size: 0.9rem;
-      }
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
-      .about-photo {
-        margin: 0 auto 1rem;
-        flex: 0 0 150px;
-      }
-      .name-typed-text {
-        font-size: clamp(2rem, 6vw, 2.5rem);
-      }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotateY(0deg); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px #00d2ff; }
-      50% { transform: translateY(-15px) rotateY(8deg); box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 0 3px #00f2fe; }
-    }
-    #success-message {
-      animation: float 3s ease-in-out infinite;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-  </style>
-</head>
-<body>
-  <header id="header">
-    <canvas id="hero-canvas"></canvas>
-    <h1 data-aos="zoom-in"><span class="name-typed-text">T. Ravi Kumar</span></h1>
-    <p data-aos="fade-up" data-aos-delay="200" class="typed-text">Data Science Enthusiast | Python • SQL • TensorFlow • ML</p>
-  </header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#resume">Resume</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <section id="about" class="about" data-aos="fade-up">
-    <div class="about-content">
-      <h2>About Me</h2>
-      <p>I'm T. Ravi Kumar, a dedicated Data Science student at Vikrama Simhapuri University, pursuing a BCA in AI and Data Science. Skilled in Python, SQL, Pandas, scikit-learn, TensorFlow, and machine learning, I specialize in predictive modeling and data analysis for finance and emotion analytics. Currently enhancing my expertise through a Data Science course at TEKS Academy, I have delivered over 5 projects with high accuracy. My goal is to leverage data to solve real-world challenges.</p>
-    </div>
-  </section>
-  <section id="skills" class="skills" data-aos="fade-up">
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Programming Languages:</strong> Python, SQL</li>
-      <li><strong>Libraries:</strong> Pandas, NumPy, scikit-learn, TensorFlow</li>
-      <li><strong>Tools:</strong> Streamlit, SQL Server, Power BI, Git</li>
-      <li><strong>Concepts:</strong> Machine Learning, Deep Learning, Data Analysis, Predictive Modeling, Model Deployment</li>
-    </ul>
-  </section>
-  <section id="projects" class="projects" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="ml">Machine Learning</button>
-      <button class="filter-btn" data-filter="powerbi">Power BI</button>
-    </div>
-    <div class="project-card ml" data-aos="flip-left">
-      <img src="https://via.placeholder.com/300x150?text=Loan+Approval" alt="Loan Approval Prediction Screenshot">
-      <h3>🔍 Loan Approval Prediction (ICE)</h3>
-      <p>Developed a machine learning model using Random Forest and XGBoost in scikit-learn to predict loan approval status, probability, and risk category for over 8,000 records. Preprocessed data with Pandas and NumPy, deployed via Gradio on Hugging Face Spaces.</p>
-      <a class="btn" href="https://huggingface.co/spaces/ravi868/ICE" target="_blank">View on Hugging Face</a>
-    </div>
-    <div class="project-card ml" data-aos="flip-left" data-aos-delay="100">
-      <img src="https://via.placeholder.com/300x150?text=Facial+Expression" alt="Facial Expression Classification Screenshot">
-      <h3>😊 Facial Expression Classification</h3>
-      <p>Built a deep learning model using TensorFlow to classify seven facial expressions (Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral) in grayscale images. Preprocessed 10,000+ records with Pandas and NumPy, deployed on Hugging Face Spaces.</p>
-      <a class="btn" href="https://huggingface.co/spaces/ravi868/Facial_Expression_Classification" target="_blank">View on Hugging Face</a>
-    </div>
-    <div class="project-card powerbi" data-aos="flip-left" data-aos-delay="200">
-      <img src="https://via.placeholder.com/300x150?text=Retail+Sales" alt="Retail Sales Forecasting Screenshot">
-      <h3>📊 Retail Sales Forecasting Dashboard</h3>
-      <p>Developed a time-series forecasting model using TensorFlow and scikit-learn on a Google retail dataset. Built a Power BI dashboard with line charts, treemaps, heatmaps, and slicers for 10,000+ records, optimized inventory by 15%. Deployed via Streamlit on Hugging Face Spaces.</p>
-      <a class="btn" href="https://huggingface.co/spaces/ravi868/Retail_Sales_Forecasting" target="_blank">View on Hugging Face</a>
-    </div>
-  </section>
-  <section id="resume" class="resume" data-aos="fade-up">
-    <h2>Resume</h2>
-    <div class="resume-content">
-      <h3>Experience</h3>
-      <p><strong>Chathrapathi Greentech Softwares Pvt, Python Long Term Internship</strong><br>
-      - Developed Python scripts using Pandas and NumPy to preprocess datasets, reducing data processing time by 20%.<br>
-      - Built predictive models with scikit-learn to analyze company data, enhancing business analytics insights.</p>
-      <p><strong>Infox, Junior Data Scientist</strong><br>
-      - Developed machine learning models with high accuracy using scikit-learn.<br>
-      - Optimized SQL queries and data pipelines for analysis of 10,000+ data points.<br>
-      - Collaborated with cross-functional teams to deploy predictive models into production, improving decision-making efficiency by 20%.</p>
-      <h3>Education</h3>
-      <p><strong>BCA, AI and Data Science, Vikrama Simhapuri University, Nellore</strong><br>
-      09/2022 - 06/2025<br>
-      - Studied Python, SQL, machine learning, and statistical analysis.</p>
-      <h3>Certifications</h3>
-      <ul>
-        <li>Post Graduate Diploma in Data Science, 2022</li>
-        <li>Certificate in Multimedia Basics, A.P. Modell Junior College, 2022</li>
-      </ul>
-      <h3>Languages</h3>
-      <ul>
-        <li>Telugu, English, Hindi, Urdu</li>
-      </ul>
-      <h3>Awards</h3>
-      <ul>
-        <li>2 NSS Certificates for community service, 2024</li>
-        <li>Ministry of Youth Affairs and Sports Certificate, 2024</li>
-      </ul>
-    </div>
-    <a class="btn" href="T_Ravi_Data_Scientist_Resume.pdf" download>Download Resume</a>
-  </section>
-  <section id="contact" class="contact" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">linkedin.com/in/t-ravikumar-038a3b345</a></p>
-    <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
-    <p>Hugging Face: <a href="https://huggingface.co/ravi868" target="_blank">huggingface.co/ravi868</a></p>
-    <p>Location: Hyderabad, India</p>
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-    <div id="success-message" style="display: none; padding: 30px; border-radius: 12px; margin: 20px auto; max-width: 600px; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative;">
-      <div style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; background-color: #00d2ff; border-radius: 8px; transform: rotate(15deg);"></div>
-      <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #00d2ff;">✨ Thank You! ✨</h3>
-      <p style="line-height: 1.6; font-size: 1.1em;">
-        Your message has been successfully received, and it's now part of my growing journey in Data Science!<br><br>
-        I'm thrilled to connect with fellow innovators, dreamers, and doers like you. Every message adds a spark to my passion for turning data into powerful insights.<br><br>
-        I can't wait to get back to you with energy, enthusiasm, and the precision of a future Data Scientist. Stay curious, stay inspired, and let's keep pushing the boundaries of possibility! 😊
-      </p>
-    </div>
-  </section>
-  <a href="#" class="back-to-top">↑</a>
-  <footer>
-    <div class="footer-links">
-      <a href="https://github.com/TRavi8688" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">LinkedIn</a>
-      <a href="mailto:travikumartravikumar00@gmail.com">Email</a>
-      <a href="https://huggingface.co/ravi868" target="_blank">Hugging Face</a>
-    </div>
-    <p>© 2025 T. Ravi Kumar | Built with ❤️ for Data Science</p>
-  </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script>
-    emailjs.init("JsY8KGiITHJueqlEs");
-    document.getElementById("contact-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      emailjs.sendForm("service_btbvq2d", "template_32zpg14", e.target)
-        .then(() => {
-          document.getElementById("contact-form").style.display = "none";
-          document.getElementById("success-message").style.display = "block";
-        })
-        .catch((error) => {
-          console.log("Contact form email failed:", error);
-          document.getElementById("contact-form").style.display = "none";
-          document.getElementById("success-message").style.display = "block";
-        });
-    });
-    window.addEventListener("load", function() {
-      const sessionId = Math.random().toString(36).substr(2, 9);
-      const timestamp = new Date().toISOString();
-      fetch("https://ipapi.co/json/")
-        .then(response => response.json())
-        .then(data => {
-          const visitorInfo = {
-            session_id: sessionId,
-            ip: data.ip || "Unknown",
-            city: data.city || "Unknown",
-            country: data.country_name || "Unknown",
-            timestamp: timestamp
-          };
-          emailjs.send("service_btbvq2d", "template_portfolio_view", visitorInfo)
-            .then(() => {
-              console.log("Portfolio view notification sent");
-            })
-            .catch(error => {
-              console.log("Portfolio view notification failed:", error);
-            });
-        })
-        .catch(error => {
-          console.log("Failed to fetch visitor info:", error);
-          emailjs.send("service_btbvq2d", "template_portfolio_view", {
-            session_id: sessionId,
-            ip: "Unknown",
-            city: "Unknown",
-            country: "Unknown",
-            timestamp: timestamp
-          });
-        });
-    });
-    AOS.init({ duration: 1000, once: true });
-    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filter = button.getAttribute('data-filter');
-        projectCards.forEach(card => {
-          if (filter === 'all' || card.classList.contains(filter)) {
-            card.classList.add('show');
-          } else {
-            card.classList.remove('show');
-          }
-        });
-      });
-    });
-    projectCards.forEach(card => card.classList.add('show'));
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    });
-    // Comprehensive Neural Network Animation with Three.js
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    camera.position.z = 50;
-
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-    scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0x00F0FF, 1, 100);
-    pointLight.position.set(0, 0, 50);
-    scene.add(pointLight);
-
-    // Neural Network Layers
-    const layers = [
-      { nodes: 10, z: -20 }, // Input layer
-      { nodes: 8, z: 0 },   // Hidden layer 1
-      { nodes: 6, z: 20 },  // Hidden layer 2
-      { nodes: 4, z: 40 }   // Output layer
-    ];
-    const allNodes = [];
-
-    layers.forEach((layer, layerIndex) => {
-      for (let i = 0; i < layer.nodes; i++) {
-        const geometry = new THREE.SphereGeometry(0.8, 16, 16);
-        const material = new THREE.MeshBasicMaterial({
-          color: layerIndex === 0 ? 0x00F0FF : (layerIndex === layers.length - 1 ? 0x8B00FF : 0xA9A9A9),
-          transparent: true,
-          opacity: 0.9
-        });
-        const node = new THREE.Mesh(geometry, material);
-        node.position.set(
-          (i - (layer.nodes - 1) / 2) * 5,
-          (layerIndex - (layers.length - 1) / 2) * 10,
-          layer.z
-        );
-        node.pulseSpeed = Math.random() * 0.01 + 0.005;
-        scene.add(node);
-        allNodes.push(node);
-      }
-    });
-
-    // Connections between layers
-    const connections = [];
-    for (let i = 0; i < layers.length - 1; i++) {
-      for (let j = 0; j < layers[i].nodes; j++) {
-        for (let k = 0; k < layers[i + 1].nodes; k++) {
-          const geometry = new THREE.BufferGeometry();
-          const material = new THREE.LineBasicMaterial({ color: 0x00F0FF, transparent: true, opacity: 0.4 });
-          const points = [];
-          const startNode = allNodes[j + layers.slice(0, i).reduce((sum, l) => sum + l.nodes, 0)];
-          const endNode = allNodes[j + k + layers.slice(0, i + 1).reduce((sum, l) => sum + l.nodes, 0)];
-          points.push(startNode.position);
-          points.push(endNode.position);
-          geometry.setFromPoints(points);
-          const line = new THREE.Line(geometry, material);
-          scene.add(line);
-          connections.push(line);
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="T. Ravi Kumar's Data Science Portfolio" />
+    <title>T. Ravi Kumar | Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg-color: #0d1117;
+            --dark-primary-color: #f0f6fc;
+            --dark-secondary-color: #8b949e;
+            --dark-accent-color: #58a6ff;
+            --dark-card-bg: #161b22;
+            --dark-border-color: #30363d;
+            --light-bg-color: #ffffff;
+            --light-primary-color: #24292e;
+            --light-secondary-color: #586069;
+            --light-accent-color: #0366d6;
+            --light-card-bg: #f6f8fa;
+            --light-border-color: #e1e4e8;
         }
-      }
-    }
 
-    function resizeRenderer() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    window.addEventListener('resize', resizeRenderer);
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
 
-    function animate() {
-      requestAnimationFrame(animate);
-      allNodes.forEach(node => {
-        node.scale.x = node.scale.y = node.scale.z = 1 + Math.sin(Date.now() * node.pulseSpeed) * 0.2;
-      });
-      connections.forEach(connection => {
-        connection.geometry.attributes.position.needsUpdate = true;
-      });
-      renderer.render(scene, camera);
-    }
-    animate();
-  </script>
+        body.dark-mode {
+            background-color: var(--dark-bg-color);
+            color: var(--dark-primary-color);
+        }
+
+        body.light-mode {
+            background-color: var(--light-bg-color);
+            color: var(--light-primary-color);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-accent-color);
+            transition: color 0.3s;
+        }
+
+        body.light-mode h1,
+        body.light-mode h2,
+        body.light-mode h3 {
+            color: var(--light-accent-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 50px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--dark-secondary-color);
+        }
+
+        body.light-mode header p {
+            color: var(--light-secondary-color);
+        }
+
+        #theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 2px solid var(--dark-accent-color);
+            color: var(--dark-accent-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        body.light-mode #theme-toggle {
+            border-color: var(--light-accent-color);
+            color: var(--light-accent-color);
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--dark-accent-color);
+            color: white;
+        }
+
+        body.light-mode #theme-toggle:hover {
+            background-color: var(--light-accent-color);
+            color: white;
+        }
+
+        nav {
+            background: var(--dark-bg-color);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--dark-border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body.light-mode nav {
+            background-color: var(--light-bg-color);
+            border-bottom-color: var(--light-border-color);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--dark-accent-color);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        body.light-mode nav a {
+            color: var(--light-accent-color);
+        }
+
+        nav a:hover {
+            color: var(--dark-primary-color);
+            background-color: var(--dark-accent-color);
+            border-radius: 5px;
+        }
+        
+        body.light-mode nav a:hover {
+            color: white;
+            background-color: var(--light-accent-color);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--dark-card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--dark-border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        body.light-mode section {
+            background-color: var(--light-card-bg);
+            border-color: var(--light-border-color);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .about-grid, .projects-grid, .skills-list, .resume-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .about-photo {
+            border: 5px solid var(--dark-accent-color);
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            justify-self: center;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .skills-list {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skills-list li {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--dark-accent-color);
+            background-color: var(--dark-bg-color);
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+
+        body.light-mode .skills-list li {
+            border-left-color: var(--light-accent-color);
+            background-color: var(--light-card-bg);
+        }
+
+        .skills-list li:hover {
+            transform: translateY(-5px);
+        }
+
+        .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background: var(--dark-bg-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--dark-border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s, border-color 0.3s;
+        }
+
+        body.light-mode .project-card {
+            background-color: var(--light-card-bg);
+            border-color: var(--light-border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background-color: var(--dark-accent-color);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        body.light-mode .btn {
+            background-color: var(--light-accent-color);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-primary-color);
+            color: var(--dark-accent-color);
+            border: 1px solid var(--dark-accent-color);
+        }
+        
+        body.light-mode .btn:hover {
+            background-color: var(--light-card-bg);
+            color: var(--light-accent-color);
+            border-color: var(--light-accent-color);
+        }
+
+        .resume-content p, .resume-content li {
+            margin-bottom: 1rem;
+        }
+
+        .resume-content strong {
+            color: var(--dark-accent-color);
+        }
+
+        body.light-mode .resume-content strong {
+            color: var(--light-accent-color);
+        }
+
+        .contact-info a {
+            color: var(--dark-accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        body.light-mode .contact-info a {
+            color: var(--light-accent-color);
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        form input, form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--dark-border-color);
+            border-radius: 5px;
+            background: var(--dark-bg-color);
+            color: var(--dark-primary-color);
+            font-family: 'Lato', sans-serif;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode form input,
+        body.light-mode form textarea {
+            background-color: var(--light-card-bg);
+            color: var(--light-primary-color);
+            border-color: var(--light-border-color);
+        }
+
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--dark-accent-color);
+        }
+        
+        body.light-mode form input:focus, body.light-mode form textarea:focus {
+            border-color: var(--light-accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--dark-border-color);
+            transition: border-color 0.3s;
+        }
+        
+        body.light-mode footer {
+            border-top-color: var(--light-border-color);
+        }
+
+        .footer-links a {
+            color: var(--dark-accent-color);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        body.light-mode .footer-links a {
+            color: var(--light-accent-color);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+
+            section {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header id="header">
+        <button id="theme-toggle">☀️</button>
+        <h1>T. Ravi Kumar</h1>
+        <p>Data Science Enthusiast | Python • SQL • ML</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#bhoomi">Bhoomi Agritech</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="about" data-aos="fade-up">
+            <h2 class="section-intro">About Me</h2>
+            <div class="about-grid">
+                <div class="about-photo">
+                    <img src="https://via.placeholder.com/200?text=Profile+Picture" alt="T. Ravi Kumar Profile Photo">
+                </div>
+                <div>
+                    <p>I'm T. Ravi Kumar, a dedicated Data Science professional with a strong foundation in a Bachelor of Computer Applications in AI and Data Science from Vikrama Simhapuri University. I specialize in leveraging data to solve real-world challenges, with expertise in Python, SQL, Pandas, scikit-learn, and TensorFlow. Currently, I am expanding my skills in data analytics and machine learning while seeking opportunities to apply my knowledge in a professional environment. My goal is to build intelligent systems that drive innovation and create a positive impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" data-aos="fade-up">
+            <h2 class="section-intro">My Skills</h2>
+            <ul class="skills-list">
+                <li><strong>Programming:</strong> Python, SQL</li>
+                <li><strong>Data Science:</strong> Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn</li>
+                <li><strong>Machine Learning:</strong> Supervised & Unsupervised Learning, Predictive Modeling, Model Deployment</li>
+                <li><strong>Deep Learning:</strong> TensorFlow, Neural Networks, Image Classification</li>
+                <li><strong>Data Analytics & Visualization:</strong> SQL Server, Power BI, Streamlit</li>
+                <li><strong>Version Control:</strong> Git, GitHub</li>
+            </ul>
+        </section>
+
+        <section id="projects" data-aos="fade-up">
+            <h2 class="section-intro">My Data Science Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <img src="https://via.placeholder.com/400x200?text=Loan+Approval+Model" alt="Loan Approval Prediction Screenshot">
+                    <h3>Loan Approval Prediction</h3>
+                    <p>Developed a machine learning model using <strong>Random Forest and XGBoost</strong> in scikit-learn to predict loan approval status and probability. Preprocessed and cleaned a large dataset of over 8,000 records using Pandas and NumPy. The model was deployed using Gradio on Hugging Face Spaces for interactive use.</p>
+                    <a class="btn" href="https://huggingface.co/spaces/ravi868/ICE" target="_blank">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://via.placeholder.com/400x200?text=Facial+Expression+Model" alt="Facial Expression Classification Screenshot">
+                    <h3>Facial Expression Classification</h3>
+                    <p>Created a deep learning model using <strong>TensorFlow</strong> to accurately classify seven distinct facial expressions (Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral) from grayscale images. The model was trained on a dataset of over 10,000 images and was deployed for real-time inference on Hugging Face Spaces.</p>
+                    <a class="btn" href="https://huggingface.co/spaces/ravi868/Facial_Expression_Classification" target="_blank">View Project</a>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://via.placeholder.com/400x200?text=Retail+Sales+Dashboard" alt="Retail Sales Forecasting Screenshot">
+                    <h3>Retail Sales Forecasting Dashboard</h3>
+                    <p>Designed and built a comprehensive **Power BI dashboard** to visualize key retail sales metrics and predict future trends. The project involved time-series forecasting using TensorFlow and scikit-learn, and the dashboard was created with interactive charts to help a Google retail client optimize inventory by 15%.</p>
+                    <a class="btn" href="https://huggingface.co/spaces/ravi868/Retail_Sales_Forecasting" target="_blank">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="bhoomi" data-aos="fade-up">
+            <h2 class="section-intro">Bhoomi Agritech</h2>
+            <p class="section-intro">Bhoomi Agritech is my vision for a sustainable future in agriculture. We are dedicated to empowering farmers through innovative solutions, including organic fertilizers, bio-pesticides, and expert consultancy. My role is to leverage data and technology to optimize agricultural practices and enhance crop yields, bringing a data-driven approach to the fields.</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a class="btn" href="https://bhoomi-agritech-0o35rbl.gamma.site/" target="_blank">Visit Bhoomi Agritech Website</a>
+            </div>
+        </section>
+
+        <section id="resume" data-aos="fade-up">
+            <h2 class="section-intro">Resume</h2>
+            <div class="resume-content">
+                <h3>Experience</h3>
+                <p><strong>Bhoomi Agritech, Founder</strong></p>
+                <p>January 2024 - Present</p>
+                <ul>
+                    <li>Founded an agriculture technology company focused on organic fertilizers and bio-pesticides.</li>
+                    <li>Developed and maintain the company's website, providing online resources and consultation for farmers and students.</li>
+                    <li>Applied data analysis techniques to optimize agricultural solutions, reduce cultivation costs, and increase crop yields.</li>
+                </ul>
+                <p><strong>Chathrapathi Greentech Softwares Pvt, Python Long Term Internship</strong></p>
+                <p>November 2023 - May 2024</p>
+                <ul>
+                    <li>Developed Python scripts using Pandas and NumPy to preprocess datasets, reducing data processing time by 20%.</li>
+                    <li>Built predictive models with scikit-learn to analyze company data, enhancing business analytics insights.</li>
+                </ul>
+                <p><strong>Infox, Junior Data Scientist</strong></p>
+                <p>August 2023 - October 2023</p>
+                <ul>
+                    <li>Developed machine learning models with high accuracy using scikit-learn.</li>
+                    <li>Optimized SQL queries and data pipelines for analysis of 10,000+ data points.</li>
+                    <li>Collaborated with cross-functional teams to deploy predictive models into production, improving decision-making efficiency by 20%.</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--dark-border-color); margin: 2rem 0;"/>
+                <h3>Education</h3>
+                <p><strong>BCA, AI and Data Science, Vikrama Simhapuri University, Nellore</strong><br>
+                09/2022 - 06/2025</p>
+                <ul>
+                    <li>Studied Python, SQL, machine learning, and statistical analysis.</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--dark-border-color); margin: 2rem 0;"/>
+                <h3>Certifications</h3>
+                <ul>
+                    <li>Post Graduate Diploma in Data Science, 2022</li>
+                    <li>Certificate in Multimedia Basics, A.P. Modell Junior College, 2022</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--dark-border-color); margin: 2rem 0;"/>
+                <h3>Languages</h3>
+                <ul>
+                    <li>Telugu, English, Hindi, Urdu</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid var(--dark-border-color); margin: 2rem 0;"/>
+                <h3>Awards</h3>
+                <ul>
+                    <li>2 NSS Certificates for community service, 2024</li>
+                    <li>Ministry of Youth Affairs and Sports Certificate, 2024</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a class="btn" href="T_Ravi_Data_Scientist_Resume.pdf" download>Download Resume</a>
+            </div>
+        </section>
+
+        <section id="contact" data-aos="fade-up">
+            <h2 class="section-intro">Get in Touch</h2>
+            <div class="contact-info" style="text-align: center; margin-bottom: 2rem;">
+                <p>Email: <a href="mailto:travikumartravikumar00@gmail.com">travikumartravikumar00@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">linkedin.com/in/t-ravikumar-038a3b345</a></p>
+                <p>GitHub: <a href="https://github.com/TRavi8688" target="_blank">github.com/TRavi8688</a></p>
+                <p>Hugging Face: <a href="https://huggingface.co/ravi868" target="_blank">huggingface.co/ravi868</a></p>
+                <p>Location: Hyderabad, India</p>
+            </div>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+            <div id="success-message" style="display: none; text-align: center; padding: 2rem; border: 2px solid var(--dark-accent-color); border-radius: 12px; margin-top: 2rem;">
+                <h3>✨ Thank You! ✨</h3>
+                <p>Your message has been successfully received. I'll get back to you shortly!</p>
+            </div>
+        </section>
+    </main>
+    <a href="#" class="back-to-top" style="position: fixed; bottom: 20px; right: 20px; background-color: var(--dark-accent-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; transition: background-color 0.3s;">↑</a>
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/TRavi8688" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/t-ravikumar-038a3b345" target="_blank">LinkedIn</a>
+            <a href="mailto:travikumartravikumar00@gmail.com">Email</a>
+            <a href="https://huggingface.co/ravi868" target="_blank">Hugging Face</a>
+        </div>
+        <p>© 2025 T. Ravi Kumar | Built for Data Science</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Smooth scrolling
+        document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggle.textContent = '🌙';
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // Contact form submission
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const form = e.target;
+            form.style.display = "none";
+            document.getElementById("success-message").style.display = "block";
+            // You can add your EmailJS or other backend logic here
+        });
+    </script>
 </body>
 </html>
